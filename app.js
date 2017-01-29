@@ -28,6 +28,19 @@ let vm = new Vue({
     doSomething: function () {
       $('#keyword')[0].focus();
       this.a=22;
+    },
+    onEnter:function () {
+      shell.showItemInFolder(this.filteredItems[this.selectedIndex].path);
+    },
+    increaseSelectedIndex:function () {
+      if (this.selectedIndex < this.filteredItems.length-1) {
+        this.selectedIndex++;
+      }
+    },
+    decreaseSelectedIndex:function () {
+      if (this.selectedIndex > 0) {
+        this.selectedIndex--;
+      }
     }
   }
 });
