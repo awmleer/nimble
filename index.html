@@ -36,15 +36,18 @@
     </div>
 
     <!--shortcut items-->
-    <div class="item div-item" v-if="keyword!='add'" v-for="(item,index) in filteredItems" :class="{'selected':index==selectedIndex}" @click="itemClick(index)">
+    <div class="item div-item" v-if="keyword!='add'" v-for="(item,index) in filteredItems" :class="{'selected':index==selectedIndex}">
       <div class="right floated content">
-        <button class="tiny ui icon button button-delete-item"><i class="icon x"></i></button>
+        <button class="tiny ui icon button button-delete-item" @click="deleteItem(item)"><i class="icon x"></i></button>
       </div>
-      <img class="ui avatar image" src="img/file.png">
-      <div class="content">
-        <div class="header">{{item.keyword}}</div>
-        <div class="description">{{item.path}}</div>
+      <div @click="itemClick(index)">
+        <img class="ui avatar image" src="img/file.png">
+        <div class="content">
+          <div class="header">{{item.keyword}}</div>
+          <div class="description">{{item.path}}</div>
+        </div>
       </div>
+
     </div>
 
 

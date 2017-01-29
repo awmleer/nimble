@@ -36,7 +36,6 @@ let vm = new Vue({
       $('#keyword')[0].focus();
     },
     itemClick:function (index) {
-      console.log(index);
       this.selectedIndex=index;
       this.onEnter();
     },
@@ -58,13 +57,18 @@ let vm = new Vue({
       }
     },
     addItem:function () {
-      this.items.push(this.itemAdding);
+      if (_.isUndefined(_.find(this.items,this.itemAdding))) {//if doesn't exist
+        this.items.push(this.itemAdding);
+      }
       this.keyword='';
       this.adding=false;
       this.itemAdding={
         keyword:'',
         path:''
       };
+    },
+    deleteItem:function (item) {
+      this.items=_.reject(this.items,item);
     }
   }
 });

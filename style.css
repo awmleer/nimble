@@ -8,6 +8,10 @@
   background: rgba(0,0,0,0.08)!important;
 }
 
+.ui.list>.item>div>.avatar+.content{
+  display: inline-block;
+}
+
 .circular-icon{
   text-align: center;
   padding: 0 !important;
