@@ -60,12 +60,16 @@ let vm = new Vue({
       if (_.isUndefined(_.find(this.items,this.itemAdding))) {//if doesn't exist
         this.items.push(this.itemAdding);
       }
+      this.exitAdding();
+    },
+    exitAdding:function () {
       this.keyword='';
       this.adding=false;
       this.itemAdding={
         keyword:'',
         path:''
       };
+      setTimeout("$('#keyword')[0].focus();",50);
     },
     deleteItem:function (item) {
       this.items=_.reject(this.items,item);
