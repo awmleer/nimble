@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Hello World!</title>
   <link rel="stylesheet" href="semantic/semantic.min.css">
+  <link rel="stylesheet" href="style.css">
   <!-- Normal script imports starts -->
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="semantic/jquery.min.js"></script>
@@ -20,10 +21,14 @@
     <i class="search icon"></i>
   </div>
   <div class="ui middle aligned selection list">
-    <div class="item">
+    <div class="item div-item" v-for="item in items">
+      <div class="right floated content">
+        <button class="tiny ui icon button button-delete-item"><i class="icon x"></i></button>
+      </div>
       <img class="ui avatar image" src="/images/avatar/small/helen.jpg">
       <div class="content">
-        <div class="header">Helen</div>
+        <div class="header">{{item.keyword}}</div>
+        <div class="description">{{item.path}}</div>
       </div>
     </div>
     <div class="item">

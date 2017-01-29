@@ -1,0 +1,6 @@
+.div-item .button-delete-item{
+  display: none;
+}
+.div-item:hover .button-delete-item{
+  display: block;
+}
