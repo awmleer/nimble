@@ -29,7 +29,9 @@ function createWindow () {
   }))
 
   mainWindow.on('blur', function () {
-    mainWindow.close();
+    // mainWindow.close();//todo: for debug
+
+
     // mainWindow.hide();
   })
 

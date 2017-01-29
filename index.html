@@ -12,18 +12,31 @@
   <!-- Normal script imports ends -->
   <script src="semantic/semantic.min.js"></script>
   <script src="node_modules/vue/dist/vue.js"></script>
-  <script src="app.js"></script>
+  <!--<script src="app.js"></script>-->
 </head>
 <body>
 <div style="padding: 10px;" id="app">
 
   <div class="ui big icon input" style="width: 100%;">
-    <input type="text" placeholder="Search files or folders..." v-model="keyword" id="keyword" @keydown.enter="onEnter" @keydown.down="increaseSelectedIndex" @keydown.up="decreaseSelectedIndex">
+    <input type="text" placeholder="Search files or folders..." v-model="keyword" id="keyword" @keydown.enter="onEnter" @keydown.down="increaseSelectedIndex" @keydown.up="decreaseSelectedIndex" :disabled="adding">
     <i class="search icon"></i>
   </div>
 
   <div class="ui middle aligned selection list">
-    <div class="item div-item" v-for="(item,index) in filteredItems" :class="{'selected':index==selectedIndex}" @click="itemClick(index)">
+
+    <!--item add-->
+    <div class="item div-item selected" v-if="keyword=='add' && !adding" @click="adding=true">
+      <div class="ui avatar image circular-icon">
+        <i class="icon add"></i>
+      </div>
+      <div class="content">
+        <div class="header">Add a new shortcut</div>
+        <!--<div class="description">{{item.path}}</div>-->
+      </div>
+    </div>
+
+    <!--shortcut items-->
+    <div class="item div-item" v-if="keyword!='add'" v-for="(item,index) in filteredItems" :class="{'selected':index==selectedIndex}" @click="itemClick(index)">
       <div class="right floated content">
         <button class="tiny ui icon button button-delete-item"><i class="icon x"></i></button>
       </div>
@@ -33,6 +46,24 @@
         <div class="description">{{item.path}}</div>
       </div>
     </div>
+
+
+    <!--adding-->
+    <div v-if="adding">
+      <form class="ui form">
+        <div class="field">
+          <label>Keyword</label>
+          <input type="text" name="first-name" placeholder="Input this keyword to get this shortcut in the future" v-model="itemAdding.keyword">
+        </div>
+        <div class="field">
+          <label>Full Path</label>
+          <input type="text" name="last-name" placeholder="The full path of the file or folder" v-model="itemAdding.path">
+        </div>
+        <button class="ui button" style="width: 100%;" type="button" :disabled="!itemAddingValid" @click="addItem">Add</button>
+      </form>
+    </div>
+
+
   </div>
 
   <!--<button @click="doSomething">test</button>-->

@@ -7,3 +7,14 @@
 .div-item.selected{
   background: rgba(0,0,0,0.08)!important;
 }
+
+.circular-icon{
+  text-align: center;
+  padding: 0 !important;
+  background: #ff9c5c !important;
+}
+.circular-icon i{
+  margin: 0 !important;
+  color: #FFFFFF!important;
+
+}

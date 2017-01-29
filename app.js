@@ -13,8 +13,12 @@ let vm = new Vue({
       {keyword:'hahah',path:'/Users/Hao'},
       {keyword:'work',path:'/Users/Hao/Pictures/浙大校徽.jpg'}
     ],
-    a:1,
-    selectedIndex:0
+    selectedIndex:0,
+    adding:false,
+    itemAdding:{
+      keyword:'',
+      path:''
+    }
   },
   computed:{
     filteredItems:function () {
@@ -22,12 +26,14 @@ let vm = new Vue({
       return _.filter(this.items, function (item) {
         return item.keyword.indexOf(k)!=-1;
       }).slice(0,9);
+    },
+    itemAddingValid:function () {
+      return (this.itemAdding.keyword!='' && this.itemAdding.path!='');
     }
   },
   methods:{
     doSomething: function () {
       $('#keyword')[0].focus();
-      this.a=22;
     },
     itemClick:function (index) {
       console.log(index);
@@ -35,7 +41,11 @@ let vm = new Vue({
       this.onEnter();
     },
     onEnter:function () {
-      shell.openItem(this.filteredItems[this.selectedIndex].path);
+      if (this.keyword == 'add') {
+        this.adding=true;
+      }else{
+        shell.openItem(this.filteredItems[this.selectedIndex].path);
+      }
     },
     increaseSelectedIndex:function () {
       if (this.selectedIndex < this.filteredItems.length-1) {
@@ -46,6 +56,15 @@ let vm = new Vue({
       if (this.selectedIndex > 0) {
         this.selectedIndex--;
       }
+    },
+    addItem:function () {
+      this.items.push(this.itemAdding);
+      this.keyword='';
+      this.adding=false;
+      this.itemAdding={
+        keyword:'',
+        path:''
+      };
     }
   }
 });
