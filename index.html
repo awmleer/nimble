@@ -23,7 +23,7 @@
   </div>
 
   <div class="ui middle aligned selection list">
-    <div class="item div-item" v-for="(item,index) in filteredItems" :class="{'selected':index==selectedIndex}">
+    <div class="item div-item" v-for="(item,index) in filteredItems" :class="{'selected':index==selectedIndex}" @click="itemClick(index)">
       <div class="right floated content">
         <button class="tiny ui icon button button-delete-item"><i class="icon x"></i></button>
       </div>

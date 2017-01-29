@@ -29,6 +29,11 @@ let vm = new Vue({
       $('#keyword')[0].focus();
       this.a=22;
     },
+    itemClick:function (index) {
+      console.log(index);
+      this.selectedIndex=index;
+      this.onEnter();
+    },
     onEnter:function () {
       shell.showItemInFolder(this.filteredItems[this.selectedIndex].path);
     },
