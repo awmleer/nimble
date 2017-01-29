@@ -2,22 +2,27 @@ const shell = require('electron').shell;
 const os = require('os');
 const _ = require('lodash');
 
-// setTimeout('shell.showItemInFolder(os.homedir());',1000);
+const Config = require('electron-config');
+const config = new Config();
+
 
 let vm = new Vue({
   el: '#app',
   data:{
     keyword:'',
-    items:[
-      {keyword:'test',path:'/Users/Hao'},
-      {keyword:'hahah',path:'/Users/Hao'},
-      {keyword:'work',path:'/Users/Hao/Pictures/浙大校徽.jpg'}
-    ],
+    items:[],
     selectedIndex:0,
     adding:false,
     itemAdding:{
       keyword:'',
       path:''
+    }
+  },
+  created: function () {
+    // `this` 指向 vm 实例
+    let items=config.get('items');
+    if (!_.isUndefined(items)) {
+      this.items=items;
     }
   },
   computed:{
@@ -60,6 +65,7 @@ let vm = new Vue({
       if (_.isUndefined(_.find(this.items,this.itemAdding))) {//if doesn't exist
         this.items.push(this.itemAdding);
       }
+      this.saveItems();
       this.exitAdding();
     },
     exitAdding:function () {
@@ -73,6 +79,10 @@ let vm = new Vue({
     },
     deleteItem:function (item) {
       this.items=_.reject(this.items,item);
+      this.saveItems();
+    },
+    saveItems:function () {
+      config.set('items',this.items);
     }
   }
 });
