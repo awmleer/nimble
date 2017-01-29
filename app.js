@@ -13,7 +13,8 @@ let vm = new Vue({
       {keyword:'hahah',path:'/Users/Hao'},
       {keyword:'work',path:'/Users/Hao'}
     ],
-    a:1
+    a:1,
+    selectedIndex:0
   },
   computed:{
     filteredItems:function () {
@@ -29,6 +30,10 @@ let vm = new Vue({
       this.a=22;
     }
   }
+});
+
+vm.$watch('keyword', function () {
+  this.selectedIndex=0;
 });
 
 

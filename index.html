@@ -16,12 +16,14 @@
 </head>
 <body>
 <div style="padding: 10px;" id="app">
+
   <div class="ui big icon input" style="width: 100%;">
     <input type="text" placeholder="Search files or folders..." v-model="keyword" id="keyword">
     <i class="search icon"></i>
   </div>
+
   <div class="ui middle aligned selection list">
-    <div class="item div-item" v-for="item in filteredItems">
+    <div class="item div-item" v-for="(item,index) in filteredItems" :class="{'selected':index==selectedIndex}">
       <div class="right floated content">
         <button class="tiny ui icon button button-delete-item"><i class="icon x"></i></button>
       </div>
@@ -31,7 +33,7 @@
         <div class="description">{{item.path}}</div>
       </div>
     </div>
-    <div class="item">
+    <div class="item div-item selected">
       <img class="ui avatar image" src="/images/avatar/small/christian.jpg">
       <div class="content">
         <div class="header">Christian</div>
