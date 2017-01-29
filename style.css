@@ -8,17 +8,28 @@
   background: rgba(0,0,0,0.08)!important;
 }
 
-.ui.list>.item>div>.avatar+.content{
-  display: inline-block;
+.ui.list>.item>.item-click{
+  display: list-item;
+  table-layout: fixed;
+  list-style-type: none;
+  list-style-position: outside;
+}
+.ui.list>.item>.item-click>.avatar{
+  display: table-cell!important;
+}
+.ui.list>.item>.item-click>.content {
+  display: table-cell!important;
+  padding: 0em 0em 0em 0.5em;
 }
 
 .circular-icon{
   text-align: center;
   padding: 0 !important;
-  background: #ff9c5c !important;
+  width: 32px !important;
+  height: 32px !important;
 }
 .circular-icon i{
   margin: 0 !important;
   color: #FFFFFF!important;
-
+  font-size: 16px;
 }

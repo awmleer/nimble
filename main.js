@@ -15,7 +15,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 400, height: 500,frame: false,alwaysOnTop:true});
+  mainWindow = new BrowserWindow({width: 400, height: 500,frame: false,alwaysOnTop:true,show:false});
 
   // mainWindow.once('ready-to-show', () => {
   //   mainWindow.show()
@@ -51,18 +51,21 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', function () {
-  globalShortcut.register('Command+Shift+Control+Alt+P', function () {//todo shortcut on different platforms
+  globalShortcut.register('Control+P', function () {//todo shortcut on different platforms
     if (mainWindow === null) {
-      createWindow()
+      createWindow();
+      mainWindow.show();
+      app.focus();
     }else{
       if (mainWindow.isVisible()==false) {
         mainWindow.show();
+        app.focus();
       }else {
         mainWindow.hide();
       }
     }
   });
-  createWindow();//just for debug
+  createWindow();
 });
 
 app.on('will-quit', function () {
