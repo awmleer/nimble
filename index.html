@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="semantic/semantic.min.css">
+  <script src="semantic/jquery.min.js"></script>
+  <script src="semantic/semantic.min.js"></script>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+<div class="ui middle aligned selection list">
+  <div class="item">
+    <img class="ui avatar image" src="/images/avatar/small/helen.jpg">
+    <div class="content">
+      <div class="header">Helen</div>
+    </div>
+  </div>
+  <div class="item">
+    <img class="ui avatar image" src="/images/avatar/small/christian.jpg">
+    <div class="content">
+      <div class="header">Christian</div>
+    </div>
+  </div>
+  <div class="item">
+    <img class="ui avatar image" src="/images/avatar/small/daniel.jpg">
+    <div class="content">
+      <div class="header">Daniel</div>
+    </div>
+  </div>
+</div>
+</body>
 
-  <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
+<script>
+  // You can also require other files to run in this process
+  require('./renderer.js')
+</script>
 </html>
