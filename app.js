@@ -21,7 +21,7 @@ let vm = new Vue({
       let k=this.keyword;
       return _.filter(this.items, function (item) {
         return item.keyword.indexOf(k)!=-1;
-      });
+      }).slice(0,9);
     }
   },
   methods:{
