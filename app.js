@@ -11,7 +11,7 @@ let vm = new Vue({
     items:[
       {keyword:'test',path:'/Users/Hao'},
       {keyword:'hahah',path:'/Users/Hao'},
-      {keyword:'work',path:'/Users/Hao'}
+      {keyword:'work',path:'/Users/Hao/Pictures/浙大校徽.jpg'}
     ],
     a:1,
     selectedIndex:0
@@ -35,7 +35,7 @@ let vm = new Vue({
       this.onEnter();
     },
     onEnter:function () {
-      shell.showItemInFolder(this.filteredItems[this.selectedIndex].path);
+      shell.openItem(this.filteredItems[this.selectedIndex].path);
     },
     increaseSelectedIndex:function () {
       if (this.selectedIndex < this.filteredItems.length-1) {
